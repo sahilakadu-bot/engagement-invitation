@@ -35,7 +35,6 @@ body{background:var(--deep);font-family:var(--font-mr);overflow-x:hidden;min-hei
 .center-motif{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:3}
 @keyframes spin-slow{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
-/* Ganpati SVG in center */
 .ganpati-svg{width:150px;height:172px;animation:pulse-glow 3.5s ease-in-out infinite;filter:drop-shadow(0 0 22px rgba(201,152,42,.75))}
 @keyframes pulse-glow{0%,100%{transform:scale(1);filter:drop-shadow(0 0 12px rgba(201,152,42,.5))}50%{transform:scale(1.06);filter:drop-shadow(0 0 28px rgba(232,135,58,.85))}}
 
@@ -46,10 +45,37 @@ body{background:var(--deep);font-family:var(--font-mr);overflow-x:hidden;min-hei
 .hero-date{font-size:13px;letter-spacing:.15em;color:var(--gold3);margin-top:10px;opacity:0;animation:fadeup .9s .8s forwards}
 @keyframes fadeup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-.scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;opacity:.5;animation:bob 2s ease-in-out infinite}
-.scroll-hint span{font-size:10px;letter-spacing:.15em;color:var(--gold3)}
-.scroll-arrow{width:16px;height:16px;border-right:1.5px solid var(--gold3);border-bottom:1.5px solid var(--gold3);transform:rotate(45deg)}
-@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+/* ====== SCROLL CTA - BIG & OBVIOUS ====== */
+.scroll-cta{
+  position:absolute;bottom:20px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  cursor:pointer;z-index:10;
+  animation:fadeup 1s 1.2s both;
+}
+.scroll-cta-text{
+  font-family:var(--font-mr);font-size:13px;letter-spacing:.12em;
+  color:var(--gold2);background:rgba(58,26,46,.75);
+  padding:7px 18px;border-radius:50px;
+  border:1px solid rgba(201,152,42,.4);
+  backdrop-filter:blur(4px);
+  white-space:nowrap;
+}
+.scroll-cta-arrows{display:flex;flex-direction:column;align-items:center;gap:2px}
+.scroll-cta-arrows span{
+  display:block;width:22px;height:22px;
+  border-right:2.5px solid var(--gold2);
+  border-bottom:2.5px solid var(--gold2);
+  transform:rotate(45deg);
+  opacity:0;
+}
+.scroll-cta-arrows span:nth-child(1){animation:bounce-arrow 1.4s .0s ease-in-out infinite}
+.scroll-cta-arrows span:nth-child(2){animation:bounce-arrow 1.4s .2s ease-in-out infinite}
+.scroll-cta-arrows span:nth-child(3){animation:bounce-arrow 1.4s .4s ease-in-out infinite}
+@keyframes bounce-arrow{
+  0%{opacity:0;transform:rotate(45deg) translate(-4px,-4px)}
+  50%{opacity:1}
+  100%{opacity:0;transform:rotate(45deg) translate(4px,4px)}
+}
 
 /* ====== MAIN CARD ====== */
 .main{position:relative;z-index:1;padding:0 14px 60px;max-width:680px;margin:0 auto}
@@ -64,28 +90,22 @@ body{background:var(--deep);font-family:var(--font-mr);overflow-x:hidden;min-hei
 .ganpati-blessing{font-family:var(--font-mr);font-size:16px;color:var(--orange);font-weight:600;margin-top:10px;letter-spacing:.05em;text-align:center;line-height:1.7}
 .ganpati-sub{font-size:12px;color:#9a6a3a;margin-top:2px;letter-spacing:.1em}
 
-/* Floral banner */
 .floral-banner{padding:6px 24px 0;display:flex;justify-content:center}
 .floral-banner svg{width:100%;max-width:560px;height:auto}
 
-/* ====== SAKSHAGANDHA TITLE ====== */
 .sohala-title{text-align:center;padding:16px 32px 4px;position:relative;z-index:1}
 .sohala-main{font-family:var(--font-mr);font-size:clamp(26px,5vw,40px);color:var(--rose);font-weight:700;line-height:1.3}
 .sohala-underline{display:block;height:2.5px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:8px auto 0;animation:expand-line 1.5s 1s ease-out both}
 @keyframes expand-line{from{width:0%}to{width:75%}}
 
-/* Ornament */
 .ornament{display:flex;align-items:center;gap:10px;padding:14px 32px;position:relative;z-index:1}
 .orn-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,152,42,.45),transparent)}
 .orn-icon{font-size:18px}
 
-/* ====== COUPLE SECTION ====== */
 .couple-section{padding:4px 32px 8px;position:relative;z-index:1}
-
 .person-block{text-align:center;padding:14px;background:linear-gradient(135deg,rgba(253,243,216,.6),rgba(253,248,240,.8));border:1px solid rgba(201,152,42,.2);border-radius:16px;margin-bottom:10px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
 .person-block:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(201,152,42,.15)}
 .person-block::after{content:'';position:absolute;top:-20px;right:-20px;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,rgba(201,152,42,.07),transparent);pointer-events:none}
-
 .person-title{font-size:11px;letter-spacing:.2em;color:var(--gold);font-weight:600;margin-bottom:4px}
 .person-name{font-family:var(--font-mr);font-size:clamp(18px,3.5vw,26px);color:var(--rose);font-weight:700;line-height:1.3;margin-bottom:6px}
 .person-parents{font-family:var(--font-mr);font-size:13px;color:#5c3d2e;line-height:1.9;font-weight:400}
@@ -96,7 +116,6 @@ body{background:var(--deep);font-family:var(--font-mr);overflow-x:hidden;min-hei
 .sang-line{flex:1;height:1.5px;background:linear-gradient(90deg,transparent,var(--gold));max-width:60px}
 .sang-line.r{background:linear-gradient(90deg,var(--gold),transparent)}
 
-/* ====== DETAILS ====== */
 .details-section{padding:4px 24px 16px;position:relative;z-index:1}
 .details-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .detail-card{background:linear-gradient(135deg,rgba(253,243,216,.8),rgba(253,248,240,.9));border:1px solid rgba(201,152,42,.25);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:5px;transition:transform .2s,box-shadow .2s}
@@ -107,32 +126,25 @@ body{background:var(--deep);font-family:var(--font-mr);overflow-x:hidden;min-hei
 .det-val{font-family:var(--font-mr);font-size:17px;color:var(--deep2);font-weight:600;line-height:1.3}
 .det-sub{font-family:var(--font-mr);font-size:11px;color:#7a5c3e;margin-top:2px;line-height:1.5}
 
-
-
-/* ====== MAP ====== */
 .map-section{padding:4px 24px 16px;z-index:1;position:relative;text-align:center}
 .map-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--rose),var(--rose2));color:#fff;border-radius:50px;padding:13px 30px;font-family:var(--font-mr);font-size:14px;text-decoration:none;font-weight:500;box-shadow:0 4px 20px rgba(160,50,74,.35);transition:all .25s;position:relative;overflow:hidden}
 .map-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);transform:translateX(-100%);transition:transform .45s}
 .map-btn:hover::before{transform:translateX(100%)}
 .map-btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(160,50,74,.45)}
 
-/* ====== VINANTI ====== */
 .vinanti-section{padding:4px 32px 20px;z-index:1;position:relative}
 .vinanti-box{background:linear-gradient(135deg,rgba(253,243,216,.7),rgba(253,248,240,.85));border:1px solid rgba(201,152,42,.3);border-radius:16px;padding:22px 24px;text-align:center}
 .vinanti-text{font-family:var(--font-mr);font-size:15px;color:#3a1a2e;line-height:2;font-weight:400}
 .vinanti-name{font-family:var(--font-mr);font-size:16px;color:var(--rose);font-weight:600;margin-top:12px}
 
-/* Bottom floral & footer */
 .footer-floral{padding:4px 24px 6px;display:flex;justify-content:center}
 .blessings{text-align:center;padding:4px 40px 24px;z-index:1;position:relative}
 .blessing-text{font-family:var(--font-mr);font-size:13px;color:#7a5c3e;line-height:2}
 .card-border-bot{height:7px;background:linear-gradient(90deg,var(--rose),var(--gold),var(--saffron),var(--gold2),var(--rose2),var(--gold));background-size:300% 100%;animation:shimmer-bar 5s linear infinite reverse}
 
-/* ====== MUSIC BTN ====== */
 .music-btn{position:fixed;bottom:24px;right:18px;width:46px;height:46px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;font-size:18px;z-index:1000;box-shadow:0 4px 16px rgba(201,152,42,.45);transition:all .2s;display:flex;align-items:center;justify-content:center}
 .music-btn:hover{transform:scale(1.1)}
 
-/* TOAST */
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(50px);background:var(--deep2);color:var(--gold2);padding:11px 22px;border-radius:50px;font-family:var(--font-mr);font-size:13px;border:1px solid rgba(201,152,42,.3);z-index:2000;transition:transform .3s,opacity .3s;opacity:0;pointer-events:none;white-space:nowrap}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 
@@ -169,9 +181,14 @@ body{background:var(--deep);font-family:var(--font-mr);overflow-x:hidden;min-hei
   </div>
   <p class="hero-date">शनिवार · २७ जून २०२६ · सकाळी ११:०० वा.</p>
 
-  <div class="scroll-hint">
-    <span>खाली पहा</span>
-    <div class="scroll-arrow"></div>
+  <!-- BIG OBVIOUS SCROLL CTA -->
+  <div class="scroll-cta" onclick="document.querySelector('.main').scrollIntoView({behavior:'smooth'})">
+    <div class="scroll-cta-text">👇 निमंत्रण पहा</div>
+    <div class="scroll-cta-arrows">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
 </section>
 
@@ -180,14 +197,12 @@ body{background:var(--deep);font-family:var(--font-mr);overflow-x:hidden;min-hei
   <div class="card">
     <div class="card-border-top"></div>
 
-    <!-- Ganpati inside card - Bold Flat Art Orange+Yellow Stylized -->
     <div class="ganpati-block">
       <canvas class="ganpati-inner" id="ganpati-card-canvas" width="300" height="300" style="width:140px;height:158px;"></canvas>
       <div class="ganpati-blessing">॥ श्री गणेशाय नमः ॥</div>
       <div class="ganpati-sub">शुभ साक्षगंध सोहळा</div>
     </div>
 
-    <!-- Floral banner -->
     <div class="floral-banner">
       <svg viewBox="0 0 560 60" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g transform="translate(280,30)">
@@ -215,7 +230,6 @@ body{background:var(--deep);font-family:var(--font-mr);overflow-x:hidden;min-hei
       </svg>
     </div>
 
-    <!-- साक्षगंध Title -->
     <div class="sohala-title">
       <div class="sohala-main">साक्षगंध सोहळा</div>
       <span class="sohala-underline" style="width:60%"></span>
@@ -223,10 +237,7 @@ body{background:var(--deep);font-family:var(--font-mr);overflow-x:hidden;min-hei
 
     <div class="ornament"><div class="orn-line"></div><span class="orn-icon">🪷</span><div class="orn-line"></div></div>
 
-    <!-- COUPLE -->
     <div class="couple-section">
-
-      <!-- Bride -->
       <div class="person-block" id="bride-block">
         <div class="person-title">वधू</div>
         <div class="person-name">चि. सौ. का. निकिता</div>
@@ -237,14 +248,12 @@ body{background:var(--deep);font-family:var(--font-mr);overflow-x:hidden;min-hei
         </div>
       </div>
 
-      <!-- SANG -->
       <div class="sang-block">
         <div class="sang-line"></div>
         <span class="sang-text">संग</span>
         <div class="sang-line r"></div>
       </div>
 
-      <!-- Groom -->
       <div class="person-block" id="groom-block">
         <div class="person-title">वर</div>
         <div class="person-name">चि. दर्शन</div>
@@ -258,7 +267,6 @@ body{background:var(--deep);font-family:var(--font-mr);overflow-x:hidden;min-hei
 
     <div class="ornament"><div class="orn-line"></div><span style="font-size:16px;color:var(--gold)">✦</span><div class="orn-line"></div></div>
 
-    <!-- Details -->
     <div class="details-section">
       <div class="details-grid">
         <div class="detail-card">
@@ -283,7 +291,6 @@ body{background:var(--deep);font-family:var(--font-mr);overflow-x:hidden;min-hei
 
     <div class="ornament"><div class="orn-line"></div><span class="orn-icon">🌸</span><div class="orn-line"></div></div>
 
-    <!-- Map -->
     <div class="map-section">
       <a class="map-btn" href="https://maps.app.goo.gl/bhZyt56fd514ksMe9" target="_blank">
         📌 गूगल मॅप्सवर स्थळ पहा
@@ -292,7 +299,6 @@ body{background:var(--deep);font-family:var(--font-mr);overflow-x:hidden;min-hei
 
     <div class="ornament"><div class="orn-line"></div><span style="font-size:16px;color:var(--gold)">✦</span><div class="orn-line"></div></div>
 
-    <!-- Vinanti -->
     <div class="vinanti-section">
       <div class="vinanti-box">
         <div class="vinanti-text">
@@ -306,7 +312,6 @@ body{background:var(--deep);font-family:var(--font-mr);overflow-x:hidden;min-hei
       </div>
     </div>
 
-    <!-- Bottom floral -->
     <div class="footer-floral">
       <svg viewBox="0 0 380 36" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g transform="translate(190,18)">
@@ -334,7 +339,6 @@ body{background:var(--deep);font-family:var(--font-mr);overflow-x:hidden;min-hei
 </main>
 
 <script>
-// ---- PARTICLES ----
 const canvas=document.getElementById('particle-canvas');
 const ctx=canvas.getContext('2d');
 function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
@@ -374,7 +378,6 @@ for(let i=0;i<70;i++)particles.push(new Particle());
 function anim(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});requestAnimationFrame(anim);}
 anim();
 
-// ---- MANDALA DOTS ----
 const ring=document.getElementById('mr1');
 for(let i=0;i<14;i++){
   const d=document.createElement('div');
@@ -384,7 +387,13 @@ for(let i=0;i<14;i++){
   ring.appendChild(d);
 }
 
-// ---- SCROLL REVEAL ----
+// Hide scroll CTA once user scrolls
+window.addEventListener('scroll', () => {
+  const cta = document.querySelector('.scroll-cta');
+  if(window.scrollY > 60) cta.style.opacity = '0';
+  else cta.style.opacity = '1';
+}, {passive:true});
+
 const obs=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}});
 },{threshold:.12});
@@ -393,7 +402,6 @@ document.querySelectorAll('.person-block,.detail-card,.vinanti-box').forEach(el=
   obs.observe(el);
 });
 
-// ---- CLICK HEARTS ON NAMES ----
 ['bride-block','groom-block'].forEach(id=>{
   document.getElementById(id).addEventListener('click',()=>{
     for(let i=0;i<10;i++){
@@ -409,7 +417,6 @@ document.querySelectorAll('.person-block,.detail-card,.vinanti-box').forEach(el=
   });
 });
 
-// ---- MUSIC ----
 let musicOn=false,audioCtx=null,musicInterval=null;
 const NOTES=[523.25,659.25,783.99,1046.5,880,698.46,587.33,440];
 function playChime(){
@@ -434,7 +441,6 @@ const style=document.createElement('style');
 style.textContent=`@keyframes floatH{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-130px) scale(1.5)}}`;
 document.head.appendChild(style);
 
-// ---- GANPATI BG REMOVAL ----
 function removeWhiteBg(canvas, imgSrc) {
   const ctx = canvas.getContext('2d');
   const img = new Image();
@@ -447,18 +453,13 @@ function removeWhiteBg(canvas, imgSrc) {
     const data = imageData.data;
     for (let i = 0; i < data.length; i += 4) {
       const r = data[i], g = data[i+1], b = data[i+2];
-      // Remove near-white and near-gray pixels (checkerboard bg)
-      const brightness = (r + g + b) / 3;
       const isNearWhite = r > 220 && g > 220 && b > 220;
-      const isGray = Math.abs(r-g)<18 && Math.abs(g-b)<18 && Math.abs(r-b)<18 && brightness > 180;
-      if (isNearWhite || isGray) {
-        data[i+3] = 0; // fully transparent
-      }
+      const isGray = Math.abs(r-g)<18 && Math.abs(g-b)<18 && Math.abs(r-b)<18 && (r+g+b)/3 > 180;
+      if (isNearWhite || isGray) data[i+3] = 0;
     }
     ctx.putImageData(imageData, 0, 0);
   };
   img.onerror = function() {
-    // fallback: just show image as-is via CSS trick
     canvas.style.backgroundImage = 'url(' + imgSrc + ')';
     canvas.style.backgroundSize = 'contain';
     canvas.style.backgroundRepeat = 'no-repeat';
@@ -466,7 +467,6 @@ function removeWhiteBg(canvas, imgSrc) {
   };
   img.src = imgSrc;
 }
-// hero now uses transparent PNG directly
 removeWhiteBg(document.getElementById('ganpati-card-canvas'), 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV88gx89uvR63dANp6ykQODWwdHuT7sLZRtQ&s');
 </script>
 </body>
